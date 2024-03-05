@@ -16,6 +16,7 @@ class _MyAppState extends State<MyApp> {
   TextEditingController value = TextEditingController();
   CloudKit cloudKit = CloudKit("iCloud.dev.tutorialwork.cloudkitExample");
   CloudKitAccountStatus? accountStatus;
+  String? userId;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,17 @@ class _MyAppState extends State<MyApp> {
                 },
                 child: Text('Get account status'),
               ),
-              (accountStatus != null) ? Text('Current account status: ${accountStatus}', textAlign: TextAlign.center,) : Container()
+              (accountStatus != null) ? Text('Current account status: ${accountStatus}', textAlign: TextAlign.center,) : Container(),
+              ElevatedButton(
+                onPressed: () async {
+                  userId = await cloudKit.getUserId();
+                  setState(() {
+
+                  });
+                },
+                child: Text('Get account id'),
+              ),
+              (userId != null) ? Text('Current account id: ${userId}', textAlign: TextAlign.center,) : Container()
             ],
           )),
     );

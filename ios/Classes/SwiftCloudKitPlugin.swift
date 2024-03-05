@@ -17,6 +17,7 @@ public class SwiftCloudKitPlugin: NSObject, FlutterPlugin {
       DeleteValueHandler().handle(command: call.method, arguments: callArguments, result: result)
       DeleteAllHandler().handle(command: call.method, arguments: callArguments, result: result)
       GetAccountStatusHandler().handle(command: call.method, arguments: callArguments, result: result)
+      GetUserIdHandler().handle(command: call.method, arguments: callArguments, result: result)
   }
 
 }

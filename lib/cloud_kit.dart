@@ -16,6 +16,13 @@ class CloudKit {
     _containerId = containerIdentifier;
   }
 
+  Future<String?> getUserId() async {
+    if (!Platform.isIOS) {
+      return null;
+    }
+    return await (_channel.invokeMethod('GET_USER_ID', {"containerId": _containerId}));
+  }
+
   /// Save a new entry to CloudKit using a key and value.
   /// The key need to be unique.
   /// Returns a boolean [bool] with true if the save was successfully.
